@@ -1,6 +1,6 @@
+import os
 import tkinter as tk
 import customtkinter as ctk
-
 
 ctk.set_appearance_mode("light")  
 ctk.set_default_color_theme("blue")
@@ -9,7 +9,6 @@ janela = ctk.CTk()
 janela.title("Fiap - amais")
 janela.geometry("1440x900")
 janela.configure(fg_color="#FFFBFB")
-
 
 esclero_estado = {"oculto": True}
 
@@ -24,14 +23,14 @@ def alternar_senha():
         esclero_estado["oculto"] = True
 
 
+pasta_atual = os.path.dirname(os.path.abspath(__file__))
+caminho_imagem = os.path.join(pasta_atual, "image 1.png")
 
-imagem_original = tk.PhotoImage(file="image 1.png")
+imagem_original = tk.PhotoImage(file=caminho_imagem)
 imagem_tk = imagem_original.subsample(1, 1) 
 
 label_logo = tk.Label(janela, image=imagem_tk, bg="#FFFBFB")
 label_logo.place(relx=0.5, y=220, anchor="center") 
-
-
 
 campo_email = ctk.CTkEntry(
     janela, 
@@ -47,8 +46,6 @@ campo_email = ctk.CTkEntry(
     corner_radius=4  
 )
 campo_email.place(relx=0.5, y=390, anchor="center")
-
-
 
 campo_senha = ctk.CTkEntry(
     janela, 
@@ -66,7 +63,6 @@ campo_senha = ctk.CTkEntry(
 )
 campo_senha.place(relx=0.5, y=480, anchor="center")
 
-
 botao_olho = ctk.CTkButton(
     janela, 
     text="👁️", 
@@ -78,9 +74,7 @@ botao_olho = ctk.CTkButton(
     hover_color="#F0F0F0",
     command=alternar_senha
 )
-botao_olho.place(x=910, y=480, anchor="center")
-
-
+botao_olho.place(relx=0.5, x=190, y=480, anchor="center")
 
 botao_entrar = ctk.CTkButton(
     janela, 
@@ -95,8 +89,6 @@ botao_entrar = ctk.CTkButton(
 )
 botao_entrar.place(relx=0.5, y=570, anchor="center")
 
-
-
 botao_primeiro_acesso = ctk.CTkLabel(
     janela, 
     text="PRIMEIRO ACESSO?", 
@@ -105,6 +97,5 @@ botao_primeiro_acesso = ctk.CTkLabel(
     cursor="hand2"
 )
 botao_primeiro_acesso.place(relx=0.5, y=630, anchor="center")
-
 
 janela.mainloop()
